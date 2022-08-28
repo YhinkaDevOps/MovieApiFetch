@@ -6,26 +6,18 @@ import MovieCard from './MovieCard'
 
 const API_URL = "http://www.omdbapi.com/?i=tt3896198&apikey=c3fe43d9"
 
+  function App() {
+    const [movies, setMovies] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
 
-    function App() {
-      const [movies, setMovies] = useState([]);
-      const [searchTerm, setSearchTerm] = useState("");
-
-      const searchMovies = async(title) =>{
-        const response = await fetch(`${API_URL}&s=${title}`);
-        const data = await response.json();
-           setMovies(data.Search);
-      };
-      useEffect(()=>{
-        searchMovies('thor')
-      },[])
-      // fetch(API_URL)
-      // .then((response)=>{
-      //     return response.json()
-      // }).then((response)=>{
-      //   console.log(response)
-      // })
-
+    const searchMovies = async(title) =>{
+      const response = await fetch(`${API_URL}&s=${title}`);
+      const data = await response.json();
+          setMovies(data.Search);
+    };
+    useEffect(()=>{
+      searchMovies('thor')
+    },[])
   return (
     <div className="app">
        <h1>MovieWorld</h1>
